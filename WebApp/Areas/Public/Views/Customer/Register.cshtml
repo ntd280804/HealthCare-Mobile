@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Areas/Public/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Register Customer";
+    ViewData["Title"] = "Đăng ký khách hàng";
 }
 
 <style>
@@ -96,18 +96,18 @@
                         <div class="mb-4">
                             <label asp-for="FullName" class="form-label fw-semibold">
                                 <i class="bi bi-person me-1"></i>
-                                Full Name
+                                Họ và tên
                             </label>
-                            <input asp-for="FullName" class="form-control gradient-form-control" placeholder="Enter your full name" />
+                            <input asp-for="FullName" class="form-control gradient-form-control" placeholder="Nhập họ và tên của bạn" />
                             <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
 
                         <div class="mb-4">
                             <label asp-for="Password" class="form-label fw-semibold">
                                 <i class="bi bi-lock me-1"></i>
-                                Password
+                                Mật khẩu
                             </label>
-                            <input asp-for="Password" type="password" class="form-control gradient-form-control" placeholder="Create a secure password" />
+                            <input asp-for="Password" type="password" class="form-control gradient-form-control" placeholder="Tạo mật khẩu an toàn" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
 
@@ -116,32 +116,32 @@
                                 <i class="bi bi-envelope me-1"></i>
                                 Email
                             </label>
-                            <input asp-for="Email" type="email" class="form-control gradient-form-control" placeholder="Enter your email address" />
+                            <input asp-for="Email" type="email" class="form-control gradient-form-control" placeholder="Nhập địa chỉ email của bạn" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
 
                         <div class="mb-4">
                             <label asp-for="Phone" class="form-label fw-semibold">
                                 <i class="bi bi-telephone me-1"></i>
-                                Phone
+                                Số điện thoại
                             </label>
-                            <input asp-for="Phone" type="text" class="form-control gradient-form-control" placeholder="Enter your phone number" />
+                            <input asp-for="Phone" type="text" class="form-control gradient-form-control" placeholder="Nhập số điện thoại của bạn" />
                             <span asp-validation-for="Phone" class="text-danger"></span>
                         </div>
 
                         <div class="mb-4">
                             <label asp-for="Address" class="form-label fw-semibold">
                                 <i class="bi bi-geo-alt me-1"></i>
-                                Address
+                                Địa chỉ
                             </label>
-                            <input asp-for="Address" type="text" class="form-control gradient-form-control" placeholder="Enter your address" />
+                            <input asp-for="Address" type="text" class="form-control gradient-form-control" placeholder="Nhập địa chỉ của bạn" />
                             <span asp-validation-for="Address" class="text-danger"></span>
                         </div>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary gradient-btn">
                                 <i class="bi bi-check-circle me-2"></i>
-                                Register
+                                Đăng ký
                             </button>
                         </div>
                     </form>

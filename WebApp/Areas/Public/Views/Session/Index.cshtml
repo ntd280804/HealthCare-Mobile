@@ -1,0 +1,148 @@
+@using System
+@using System.Linq
+@model WebApp.Models.Auth.SessionPageViewModel
+@{
+    Layout = "~/Areas/Public/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Phiên đăng nhập khách hàng";
+    var distinctPlatforms = Model.Sessions.Select(s => s.Platform).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+    var otherPlatforms = distinctPlatforms
+        .Where(p => !string.Equals(p, Model.CurrentPlatform, StringComparison.OrdinalIgnoreCase))
+        .ToList();
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="fw-bold mb-1">Phiên đăng nhập của bạn</h2>
+            <div class="text-muted small">
+                Platform hiện tại: <strong>@Model.CurrentPlatform</strong>
+                &nbsp;|&nbsp;
+                SessionId: <code>@Model.CurrentSessionId</code>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-md-row gap-2">
+            <form method="post" asp-action="LogoutAll">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="includeCurrentSession" value="false" />
+                <button type="submit" class="btn btn-outline-danger btn-sm"
+                        onclick="return confirm('Đăng xuất tất cả các phiên KHÁC, giữ lại phiên hiện tại?');">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="ms-1">Đăng xuất các phiên khác</span>
+                </button>
+            </form>
+
+            <form method="post" asp-action="LogoutAll">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="includeCurrentSession" value="true" />
+                <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Đăng xuất TẤT CẢ các phiên, bao gồm phiên hiện tại?');">
+                    <i class="bi bi-x-circle"></i>
+                    <span class="ms-1">Đăng xuất tất cả</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    @if (TempData["SessionMessage"] != null)
+    {
+        <div class="alert alert-info">@TempData["SessionMessage"]</div>
+    }
+
+    <div class="row g-3">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Danh sách phiên đang mở (@Model.Sessions.Count)</h5>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Platform</th>
+                                    <th>SessionId</th>
+                                    <th>Oracle SID</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hiện tại?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (!Model.Sessions.Any())
+                                {
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted">Không có phiên nào.</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    foreach (var s in Model.Sessions)
+                                    {
+                                        var isCurrent = string.Equals(s.Platform, Model.CurrentPlatform, StringComparison.OrdinalIgnoreCase)
+                                                        && string.Equals(s.SessionId, Model.CurrentSessionId, StringComparison.OrdinalIgnoreCase);
+                                        <tr>
+                                            <td>@s.Platform</td>
+                                            <td><code>@s.SessionId</code></td>
+                                            <td><code>@s.OracleSid</code></td>
+                                            <td>@s.State</td>
+                                            <td>
+                                                @if (isCurrent)
+                                                {
+                                                    <span class="badge bg-success">Hiện tại</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary">Khác</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Đăng xuất thiết bị khác</h5>
+                    <p class="text-muted small mb-3">
+                        Ví dụ: bạn đang dùng Web, có thể đăng xuất các phiên Mobile đang đăng nhập cùng tài khoản.
+                    </p>
+
+                    @if (!otherPlatforms.Any())
+                    {
+                        <div class="alert alert-light border small mb-0">
+                            Hiện chỉ có platform <strong>@Model.CurrentPlatform</strong>. Không có platform khác để đăng xuất.
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post" asp-action="LogoutPlatform" class="d-grid gap-2">
+                            @Html.AntiForgeryToken()
+                            <div class="mb-2">
+                                <label class="form-label small" for="targetPlatform">Chọn platform</label>
+                                <select class="form-select form-select-sm" id="targetPlatform" name="targetPlatform">
+                                    @foreach (var platform in otherPlatforms)
+                                    {
+                                        <option value="@platform">@platform</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <input type="hidden" name="includeCurrentSession" value="false" />
+
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                <i class="bi bi-power"></i>
+                                <span class="ms-1">Đăng xuất platform đã chọn</span>
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

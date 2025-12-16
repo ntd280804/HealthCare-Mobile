@@ -9,6 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/employee_app/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/employee_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/employee_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/HealthCare_MobileAPP/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/HealthCare_MobileAPP/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/HealthCare_MobileAPP/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

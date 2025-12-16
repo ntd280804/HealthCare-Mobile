@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang chủ";
 }
 
 <section class="hero bg-gradient position-relative overflow-hidden">
@@ -33,6 +33,10 @@
                 <a class="btn btn-outline-light btn-lg text-uppercase fw-bold"
                    asp-area="Public" asp-controller="Customer" asp-action="MobileQrLogin">
                     Tạo mã đăng nhập Mobile
+                </a>
+                <a class="btn btn-outline-light btn-lg text-uppercase fw-bold"
+                   asp-area="Public" asp-controller="Session" asp-action="Index">
+                    Quản lý phiên đăng nhập
                 </a>
             }
         </div>

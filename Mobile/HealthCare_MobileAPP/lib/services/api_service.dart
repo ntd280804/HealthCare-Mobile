@@ -8,6 +8,33 @@ import '../config/api_config.dart';
 import 'storage_service.dart';
 import '../models/order.dart';
 import '../models/part.dart';
+
+class SessionInfo {
+  final String username;
+  final String platform;
+  final String sessionId;
+  final String oracleSid;
+  final String state;
+
+  SessionInfo({
+    required this.username,
+    required this.platform,
+    required this.sessionId,
+    required this.oracleSid,
+    required this.state,
+  });
+
+  factory SessionInfo.fromJson(Map<String, dynamic> json) {
+    return SessionInfo(
+      username: json['username']?.toString() ?? '',
+      platform: json['platform']?.toString() ?? '',
+      sessionId: json['sessionId']?.toString() ?? '',
+      oracleSid: json['oracleSid']?.toString() ?? '',
+      state: json['state']?.toString() ?? '',
+    );
+  }
+}
+
 class ApiService {
   ApiService._internal() {
     // ⚠️ DEVELOPMENT ONLY: Bypass SSL certificate validation
@@ -272,6 +299,70 @@ class ApiService {
       // ignore network errors on logout
     } finally {
       await _storage.clearAll();
+    }
+  }
+
+  // =======================
+  // Session management APIs
+  // =======================
+
+  Future<List<SessionInfo>> getMySessions() async {
+    await _ensureInterceptors();
+    try {
+      final resp = await _dio.get(ApiConfig.sessionInfo);
+      if (resp.data is Map<String, dynamic>) {
+        final map = resp.data as Map<String, dynamic>;
+        if (map['success'] == true && map['data'] is List) {
+          final list = (map['data'] as List)
+              .whereType<Map<String, dynamic>>()
+              .map(SessionInfo.fromJson)
+              .toList();
+          return list;
+        }
+      }
+      return [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  /// Logout all sessions of current user.
+  /// If [includeCurrent] = false => keep current MOBILE session, logout others (WEB/MOBILE khác).
+  Future<bool> logoutAllSessions({bool includeCurrent = true}) async {
+    await _ensureInterceptors();
+    try {
+      final resp = await _dio.post(
+        ApiConfig.sessionLogoutAll,
+        data: {'includeCurrentSession': includeCurrent},
+      );
+      if (resp.data is Map<String, dynamic>) {
+        final map = resp.data as Map<String, dynamic>;
+        return map['success'] == true;
+      }
+      return false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Logout all sessions on specific platform (e.g. 'WEB' from mobile)
+  Future<bool> logoutPlatform(String platform, {bool includeCurrent = false}) async {
+    await _ensureInterceptors();
+    try {
+      final resp = await _dio.post(
+        ApiConfig.sessionLogoutPlatform,
+        data: {
+          'targetPlatform': platform,
+          'includeCurrentSession': includeCurrent,
+        },
+      );
+      if (resp.data is Map<String, dynamic>) {
+        final map = resp.data as Map<String, dynamic>;
+        return map['success'] == true;
+      }
+      return false;
+    } catch (_) {
+      return false;
     }
   }
 

@@ -1,7 +1,7 @@
 class ApiConfig {
   // Backend API base URL
   // ✅ FIXED: Khớp với WebApp và Backend server
-  static const String baseUrl = 'https://10.147.20.199:5131';
+  static const String baseUrl = 'https://api.cyberlabtraining.online';
 
   // Public endpoints (Customer)
   static const String login = '/api/Public/Customer/login';
@@ -41,4 +41,9 @@ class ApiConfig {
   static const String getPartsByPartRequest = '/api/admin/Part';
   static const String getPartsByRequestId = '/api/admin/Partrequest';
   static const String getOrderDetails = '/api/Common/Order';
+
+  // Session management (shared for customer & employee)
+  static const String sessionInfo = '/api/session';
+  static const String sessionLogoutAll = '/api/session/logout-all';
+  static const String sessionLogoutPlatform = '/api/session/logout-platform';
 }

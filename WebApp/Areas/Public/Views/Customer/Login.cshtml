@@ -1,7 +1,7 @@
 ﻿@inject IConfiguration Configuration
 @{
     Layout = "~/Areas/Public/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Public Login";
+    ViewData["Title"] = "Đăng nhập khách hàng";
 
     var webApiBase = (Configuration["WebApi:BaseUrl"] ?? string.Empty).TrimEnd('/');
     var qrCreateUrl = string.IsNullOrEmpty(webApiBase) ? string.Empty : $"{webApiBase}/api/Public/QrLogin/create";

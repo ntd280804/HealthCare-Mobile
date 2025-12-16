@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DOCUMENT\\mobile-service-system\\WebAPI\\WebAPI.csproj": {}
+    "D:\\DOCUMENT\\Sourcecode\\A16_NguyenPhuongHac\\SourceCode\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\DOCUMENT\\mobile-service-system\\WebAPI\\WebAPI.csproj": {
+    "D:\\DOCUMENT\\Sourcecode\\A16_NguyenPhuongHac\\SourceCode\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DOCUMENT\\mobile-service-system\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "D:\\DOCUMENT\\Sourcecode\\A16_NguyenPhuongHac\\SourceCode\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "D:\\DOCUMENT\\mobile-service-system\\WebAPI\\WebAPI.csproj",
+        "projectPath": "D:\\DOCUMENT\\Sourcecode\\A16_NguyenPhuongHac\\SourceCode\\WebAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\ntdmi\\.nuget\\packages\\",
-        "outputPath": "D:\\DOCUMENT\\mobile-service-system\\WebAPI\\obj\\",
+        "outputPath": "D:\\DOCUMENT\\Sourcecode\\A16_NguyenPhuongHac\\SourceCode\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -125,7 +125,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

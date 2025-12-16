@@ -9,6 +9,7 @@ import 'employee_home_screen.dart';
 import 'customer_dashboard_screen.dart';
 import 'qr_scan_screen.dart';
 import 'profile_screen.dart';
+import 'session_management_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -233,6 +234,15 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.qr_code_scanner),
             tooltip: 'Quét QR đăng nhập Web',
             onPressed: _openQrScanner,
+          ),
+          IconButton(
+            icon: const Icon(Icons.devices),
+            tooltip: 'Phiên đăng nhập',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const SessionManagementScreen()),
+              );
+            },
           ),
           IconButton(
             icon: const Icon(Icons.lock_outline),

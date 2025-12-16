@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z5TaYME1P6I=",
+  "dgSpecHash": "MUMYROktLG4=",
   "success": true,
-  "projectFilePath": "D:\\DOCUMENT\\mobile-service-system\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "D:\\DOCUMENT\\Sourcecode\\A16_NguyenPhuongHac\\SourceCode\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ntdmi\\.nuget\\packages\\aspose.drawing.common\\25.2.0\\aspose.drawing.common.25.2.0.nupkg.sha512",
     "C:\\Users\\ntdmi\\.nuget\\packages\\autofac\\7.1.0\\autofac.7.1.0.nupkg.sha512",

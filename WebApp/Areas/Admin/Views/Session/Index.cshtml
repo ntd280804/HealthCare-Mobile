@@ -1,0 +1,111 @@
+@using System
+@using System.Linq
+@model WebApp.Models.Auth.SessionPageViewModel
+@{
+    ViewData["Title"] = "Quản lý phiên đăng nhập";
+    var distinctPlatforms = Model.Sessions.Select(s => s.Platform).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+}
+
+<div class="container-fluid py-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="fw-bold mb-1">Quản lý phiên đăng nhập</h2>
+            <div class="text-muted">Platform hiện tại: <strong>@Model.CurrentPlatform</strong> | SessionId: <code>@Model.CurrentSessionId</code></div>
+        </div>
+        <div class="d-flex gap-2">
+            <form method="post" asp-action="LogoutAll" class="d-flex align-items-center gap-2">
+                <input type="hidden" name="includeCurrentSession" value="false" />
+                <div class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox" value="true" id="includeCurrentAll" name="includeCurrentSession">
+                    <label class="form-check-label" for="includeCurrentAll">
+                        Bao gồm phiên hiện tại
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn đăng xuất các phiên đã chọn?');">
+                    <i class="bi bi-box-arrow-right"></i> Đăng xuất tất cả
+                </button>
+            </form>
+        </div>
+    </div>
+
+    @if (TempData["SessionMessage"] != null)
+    {
+        <div class="alert alert-info">@TempData["SessionMessage"]</div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0">Danh sách phiên đang mở (@Model.Sessions.Count)</h5>
+                <form class="d-flex gap-2 align-items-center" method="post" asp-action="LogoutPlatform">
+                    <div class="input-group">
+                        <label class="input-group-text" for="targetPlatform">Platform</label>
+                        <select class="form-select" id="targetPlatform" name="targetPlatform">
+                            @foreach (var platform in distinctPlatforms)
+                            {
+                                <option value="@platform">@platform</option>
+                            }
+                        </select>
+                    </div>
+                    <input type="hidden" name="includeCurrentSession" value="false" />
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" value="true" id="includeCurrentPlatform" name="includeCurrentSession">
+                        <label class="form-check-label" for="includeCurrentPlatform">
+                            Bao gồm phiên hiện tại
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-power"></i> Đăng xuất platform
+                    </button>
+                </form>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>SessionId</th>
+                            <th>Oracle SID</th>
+                            <th>Trạng thái</th>
+                            <th>Hiện tại?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Sessions.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">Không có phiên nào.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var s in Model.Sessions)
+                            {
+                                var isCurrent = string.Equals(s.Platform, Model.CurrentPlatform, StringComparison.OrdinalIgnoreCase)
+                                                && string.Equals(s.SessionId, Model.CurrentSessionId, StringComparison.OrdinalIgnoreCase);
+                                <tr>
+                                    <td>@s.Platform</td>
+                                    <td><code>@s.SessionId</code></td>
+                                    <td><code>@s.OracleSid</code></td>
+                                    <td>@s.State</td>
+                                    <td>
+                                        @if (isCurrent)
+                                        {
+                                            <span class="badge bg-success">Hiện tại</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Khác</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,5 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Microsoft.AspNetCore.SignalR;
@@ -9,6 +11,8 @@ using WebAPI.Helpers;
 
 namespace WebAPI.Services
 {
+    public record OracleConnectionSummary(string Username, string Platform, string SessionId, string OracleSid, string State);
+
     public class OracleConnectionManager
     {
         private readonly IHubContext<NotificationHub> _hubContext;
@@ -224,6 +228,61 @@ namespace WebAPI.Services
 
             foreach (var key in keys)
                 await RemoveConnection(key.username, key.platform, key.sessionId);
+        }
+
+        public IReadOnlyList<OracleConnectionSummary> GetConnectionsByUsername(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                return Array.Empty<OracleConnectionSummary>();
+
+            return _connections
+                .Where(kvp => kvp.Key.username == username)
+                .Select(kvp =>
+                {
+                    string state;
+                    try
+                    {
+                        state = kvp.Value.Conn.State.ToString();
+                    }
+                    catch
+                    {
+                        state = "Unknown";
+                    }
+
+                    return new OracleConnectionSummary(
+                        kvp.Key.username,
+                        kvp.Key.platform,
+                        kvp.Key.sessionId,
+                        kvp.Value.OracleSid,
+                        state);
+                })
+                .ToList();
+        }
+
+        public async Task<int> RemoveAllConnectionsForUser(string username, string? excludeSessionId = null)
+        {
+            var keys = _connections.Keys
+                .Where(k => k.username == username && (excludeSessionId == null || k.sessionId != excludeSessionId))
+                .ToList();
+
+            foreach (var key in keys)
+                await RemoveConnection(key.username, key.platform, key.sessionId);
+
+            return keys.Count;
+        }
+
+        public async Task<int> RemoveConnectionsByPlatform(string username, string targetPlatform, string? excludeSessionId = null)
+        {
+            var keys = _connections.Keys
+                .Where(k => k.username == username
+                            && string.Equals(k.platform, targetPlatform, StringComparison.OrdinalIgnoreCase)
+                            && (excludeSessionId == null || k.sessionId != excludeSessionId))
+                .ToList();
+
+            foreach (var key in keys)
+                await RemoveConnection(key.username, key.platform, key.sessionId);
+
+            return keys.Count;
         }
         public void CleanupDeadConnections()
         {
