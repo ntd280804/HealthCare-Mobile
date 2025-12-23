@@ -381,12 +381,12 @@
     <table class="customer-table">
         <thead>
             <tr>
-                <th>Phone</th>
-                <th>Full Name</th>
-                <th>Status</th>
+                <th>SĐT</th>
+                <th>Họ tên</th>
+                <th>Trạng thái</th>
                 <th>Email</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th>Vai trò</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -395,25 +395,25 @@
                 foreach (var emp in Model.Items)
                 {
                     <tr>
-                        <td data-label="Phone">@emp.Phone</td>
-                        <td data-label="Full Name">@emp.FullName</td>
-                        <td data-label="Status">@emp.Status</td>
+                        <td data-label="SĐT">@emp.Phone</td>
+                        <td data-label="Họ tên">@emp.FullName</td>
+                        <td data-label="Trạng thái">@emp.Status</td>
                         <td data-label="Email">@emp.Email</td>
-                        <td data-label="Role">@emp.Roles</td>
-                        <td data-label="Actions">
+                        <td data-label="Vai trò">@emp.Roles</td>
+                        <td data-label="Thao tác">
                             <div class="action-buttons">
                                 @if (emp.Status == "OPEN")
                                 {
                                     <form method="post" asp-action="Lock" asp-controller="Customer" class="d-inline">
                                         <input type="hidden" name="Phone" value="@emp.Phone" />
-                                        <button type="submit" class="btn-action btn-lock">Lock</button>
+                                        <button type="submit" class="btn-action btn-lock">Khóa</button>
                                     </form>
                                 }
                                 else
                                 {
                                     <form method="post" asp-action="Unlock" asp-controller="Customer" class="d-inline">
                                         <input type="hidden" name="Phone" value="@emp.Phone" />
-                                        <button type="submit" class="btn-action btn-unlock">Unlock</button>
+                                        <button type="submit" class="btn-action btn-unlock">Mở khóa</button>
                                     </form>
                                 }
                             </div>

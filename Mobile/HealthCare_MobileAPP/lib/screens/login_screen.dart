@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: AppTheme.spacing32),
                 Text(
-                  'Mobile Service System',
+                  'Hệ thống Dịch vụ Di động',
                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),

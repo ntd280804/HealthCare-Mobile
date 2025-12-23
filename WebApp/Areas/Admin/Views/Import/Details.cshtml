@@ -215,7 +215,7 @@
 </style>
 
 <div class="detail-header">
-    <h2>Chi tiết Import #@Model.StockInId</h2>
+    <h2>Chi tiết nhập kho #@Model.StockInId</h2>
 </div>
 <div class="d-flex gap-2">
     <a class="btn-gradient" asp-action="DownloadPdf" asp-route-id="@Model.StockInId">
@@ -248,27 +248,27 @@
 </div>
 
 <div class="detail-header">
-    <h2>Items</h2>
+    <h2>Danh sách linh kiện</h2>
 </div>
 
 <div class="table-container">
     <table class="detail-table">
         <thead>
             <tr>
-                <th>Part Name</th>
-                <th>Manufacturer</th>
+                <th>Tên linh kiện</th>
+                <th>Nhà sản xuất</th>
                 <th>Serial</th>
-                <th>Price</th>
+                <th>Giá</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Items)
             {
                 <tr>
-                    <td data-label="Part Name">@item.PartName</td>
-                    <td data-label="Manufacturer">@item.Manufacturer</td>
+                    <td data-label="Tên linh kiện">@item.PartName</td>
+                    <td data-label="Nhà sản xuất">@item.Manufacturer</td>
                     <td data-label="Serial">@item.Serial</td>
-                    <td data-label="Price">@item.Price</td>
+                    <td data-label="Giá">@item.Price</td>
                 </tr>
             }
         </tbody>
@@ -305,7 +305,7 @@
         
         // Hiển thị modal với loading
         modalHeader.className = 'modal-header bg-info text-white';
-        message.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Đang xác thực...</p></div>';
+        message.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Đang tải...</span></div><p class="mt-2">Đang xác thực...</p></div>';
         modal.show();
         
         try {

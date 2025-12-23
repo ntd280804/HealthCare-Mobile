@@ -9,17 +9,22 @@ AS
   v_role  VARCHAR2(100) := SYS_CONTEXT('APP_CTX','ROLE_NAME');
   v_emp   VARCHAR2(100) := SYS_CONTEXT('APP_CTX','EMP_ID');
 BEGIN
+  -- Chặn nếu không có role
+  IF v_role IS NULL THEN
+    RETURN '1=0';
+  END IF;
+
   -- ADMIN, TIEPTAN: xem full
   IF v_role IN ('ROLE_ADMIN', 'ROLE_TIEPTAN') THEN
     RETURN '1=1';
   END IF;
 
-  -- THUKHO, KITHUATVIEN: chỉ xem bản thân
+  -- THUKHO, KITHUATVIEN: chỉ xem bản thân theo EMP_ID
   IF v_role IN ('ROLE_THUKHO', 'ROLE_KITHUATVIEN') THEN
     IF v_emp IS NULL THEN
-      RETURN '1=1';
+      RETURN '1=0';
     END IF;
-    RETURN '1=1';
+    RETURN 'EMP_ID = ' || TO_NUMBER(v_emp);
   END IF;
 
   -- KHACHHANG hoặc role khác: không được xem

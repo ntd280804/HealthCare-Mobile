@@ -386,14 +386,14 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Customer Phone</th>
-            <th>Receiver Emp</th>
-            <th>Handler Emp</th>
-            <th>Order Type</th>
-            <th>Received Date</th>
-            <th>Status</th>
-            <th>Description</th>
-            <th>Actions</th>
+            <th>SĐT khách hàng</th>
+            <th>Người tiếp nhận</th>
+            <th>Người xử lý</th>
+            <th>Loại đơn</th>
+            <th>Ngày nhận</th>
+            <th>Trạng thái</th>
+            <th>Mô tả</th>
+            <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
@@ -403,14 +403,14 @@
             {
                 <tr>
                     <td data-label="#">@order.OrderId</td>
-                    <td data-label="Customer Phone">@order.CustomerPhone</td>
-                    <td data-label="Receiver Emp">@order.ReceiverEmpName</td>
-                    <td data-label="Handler Emp">@order.HandlerEmpName</td>
-                    <td data-label="Order Type">@order.OrderType</td>
-                    <td data-label="Received Date">@order.ReceivedDate.ToString("dd/MM/yyyy HH:mm")</td>
-                    <td data-label="Status">@order.Status</td>
-                    <td data-label="Description">@order.Description</td>
-                    <td data-label="Actions">
+                    <td data-label="SĐT khách hàng">@order.CustomerPhone</td>
+                    <td data-label="Người tiếp nhận">@order.ReceiverEmpName</td>
+                    <td data-label="Người xử lý">@order.HandlerEmpName</td>
+                    <td data-label="Loại đơn">@order.OrderType</td>
+                    <td data-label="Ngày nhận">@order.ReceivedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td data-label="Trạng thái">@order.Status</td>
+                    <td data-label="Mô tả">@order.Description</td>
+                    <td data-label="Thao tác">
                         <a class="btn-action btn-detail" href="@Url.Action("Details", "Order", new { id = order.OrderId })">Chi tiết</a>
                         @if (HasRole("ROLE_ADMIN","ROLE_KITHUATVIEN"))
                         {

@@ -1,7 +1,7 @@
 ﻿@model WebApp.Models.Common.PaginatedList<WebApp.Models.Part.ExportViewModel>
 
 @{
-    ViewData["Title"] = "Danh sách Export";
+    ViewData["Title"] = "Danh sách xuất kho";
 }
 
 <style>
@@ -257,11 +257,11 @@
     <table class="export-table">
         <thead>
             <tr>
-                <th>StockOut ID</th>
-                <th>Employee Username</th>
-                <th>Out Date</th>
-                <th>Note</th>
-                <th>Actions</th>
+                <th>Mã xuất kho</th>
+                <th>Nhân viên</th>
+                <th>Ngày xuất</th>
+                <th>Ghi chú</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -270,11 +270,11 @@
                 foreach (var item in Model.Items)
                 {
                 <tr>
-                    <td data-label="StockOut ID">@item.StockOutId</td>
-                    <td data-label="Employee Username">@item.EmpUsername</td>
-                    <td data-label="Out Date">@item.OutDate.ToString("yyyy-MM-dd HH:mm")</td>
-                    <td data-label="Note">@item.Note</td>
-                    <td data-label="Actions">
+                    <td data-label="Mã xuất kho">@item.StockOutId</td>
+                    <td data-label="Nhân viên">@item.EmpUsername</td>
+                    <td data-label="Ngày xuất">@item.OutDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td data-label="Ghi chú">@item.Note</td>
+                    <td data-label="Thao tác">
                         <div class="action-buttons">
                             <a class="btn-action btn-info"
                                asp-area="Admin"

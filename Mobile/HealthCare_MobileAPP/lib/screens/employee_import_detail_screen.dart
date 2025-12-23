@@ -97,7 +97,7 @@ class _EmployeeImportDetailScreenState extends State<EmployeeImportDetailScreen>
               Text(message.toString().isNotEmpty ? message.toString() : 
                   (isValid ? 'Chữ ký số hợp lệ' : 'Chữ ký số không hợp lệ')),
               const SizedBox(height: 8),
-              Text('StockIn ID: $stockInId'),
+              Text('Mã nhập kho: $stockInId'),
             ],
           ),
           actions: [

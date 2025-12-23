@@ -94,7 +94,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Health Care - Nhân viên'),
+        title: const Text('Dịch vụ - Nhân viên'),
         actions: [
           IconButton(
             icon: const Icon(Icons.qr_code_scanner),
@@ -115,7 +115,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
           NavigationDestination(
             icon: Icon(Icons.dashboard_outlined),
             selectedIcon: Icon(Icons.dashboard),
-            label: 'Dashboard',
+            label: 'Trang chủ',
           ),
           NavigationDestination(
             icon: Icon(Icons.calendar_today_outlined),
@@ -140,7 +140,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
           NavigationDestination(
             icon: Icon(Icons.receipt_outlined),
             selectedIcon: Icon(Icons.receipt),
-            label: 'Invoice',
+            label: 'Hóa đơn',
           ),
         ],
       ),

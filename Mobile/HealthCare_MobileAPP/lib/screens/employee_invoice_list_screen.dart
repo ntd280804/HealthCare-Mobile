@@ -130,7 +130,7 @@ class _EmployeeInvoiceListScreenState extends State<EmployeeInvoiceListScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 if (stockOutId.toString().isNotEmpty)
-                                  Text('StockOut ID: $stockOutId'),
+                                  Text('Mã xuất kho: $stockOutId'),
                                 if (customerPhone.toString().isNotEmpty)
                                   Text('SĐT: $customerPhone'),
                                 if (employee.toString().isNotEmpty)

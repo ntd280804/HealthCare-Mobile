@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AppointmentsProvider()),
       ],
       child: MaterialApp(
-        title: 'Mobile Service System',
+        title: 'Hệ thống Dịch vụ Di động',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         routes: {

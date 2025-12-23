@@ -136,7 +136,7 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              'Chào mừng đến với Health Care',
+                              'Chào mừng đến với Dịch vụ Di động',
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),

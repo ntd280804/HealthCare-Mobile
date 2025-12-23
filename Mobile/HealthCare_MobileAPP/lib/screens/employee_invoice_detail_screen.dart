@@ -97,7 +97,7 @@ class _EmployeeInvoiceDetailScreenState extends State<EmployeeInvoiceDetailScree
               Text(message.toString().isNotEmpty ? message.toString() : 
                   (isValid ? 'Chữ ký số hợp lệ' : 'Chữ ký số không hợp lệ')),
               const SizedBox(height: 8),
-              Text('Invoice ID: $invoiceId'),
+              Text('Mã hóa đơn: $invoiceId'),
             ],
           ),
           actions: [

@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HealthCare - Khách hàng'),
+        title: const Text('Dịch vụ - Khách hàng'),
         actions: [
           IconButton(
             icon: const Icon(Icons.qr_code_scanner),
@@ -264,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
           NavigationDestination(
             icon: Icon(Icons.dashboard_outlined),
             selectedIcon: Icon(Icons.dashboard),
-            label: 'Dashboard',
+            label: 'Trang chủ',
           ),
           NavigationDestination(
             icon: Icon(Icons.shopping_cart_outlined),

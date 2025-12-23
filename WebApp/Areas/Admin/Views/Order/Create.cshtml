@@ -149,7 +149,7 @@
             <div class="detail-card-body">
                 <div class="row g-3">
                     <div class="col-12 col-md-6">
-                        <label class="form-label">Customer Phone</label>
+                        <label class="form-label">SĐT khách hàng</label>
                         <select asp-for="CustomerPhone" class="form-control" id="CustomerPhoneSelect" asp-items="ViewBag.CustomerPhones">
                             <option value="">-- Chọn khách hàng --</option>
                         </select>
@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label class="form-label">Handler Username</label>
+                        <label class="form-label">Nhân viên xử lý</label>
                         <select asp-for="HandlerEmpName" class="form-control" id="HandlerEmpSelect" asp-items="ViewBag.HandlerUsernames">
                             <option value="">-- Chọn nhân viên xử lý --</option>
                         </select>
@@ -165,13 +165,13 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label class="form-label">Order Type</label>
+                        <label class="form-label">Loại đơn hàng</label>
                         @Html.DropDownListFor(m => m.OrderType, orderTypeList, "-- Chọn loại đơn --", new { @class = "form-control" })
                         <span asp-validation-for="OrderType" class="text-danger"></span>
                     </div>
 
                     <div class="col-12">
-                        <label class="form-label">Description</label>
+                        <label class="form-label">Mô tả</label>
                         <textarea asp-for="Description" class="form-control"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>

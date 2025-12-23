@@ -213,7 +213,7 @@
             color: #1e293b;
         }
 
-        .partrequest-table tbody td[data-label="ACTION"]:before {
+        .partrequest-table tbody td[data-label="Thao tác"]:before {
             display: none;
         }
 
@@ -244,12 +244,12 @@
     <table class="partrequest-table">
         <thead>
             <tr>
-                <th>Request Id</th>
-                <th>EMPLOYEE USERNAME</th>
-                <th>In Date</th>
-                <th>ORDER_ID</th>
-                <th>STATUS</th>
-                <th>ACTION</th>
+                <th>Mã yêu cầu</th>
+                <th>NHÂN VIÊN</th>
+                <th>Ngày tạo</th>
+                <th>MÃ ĐƠN HÀNG</th>
+                <th>TRẠNG THÁI</th>
+                <th>THAO TÁC</th>
             </tr>
         </thead>
         <tbody>
@@ -258,10 +258,10 @@
                 foreach (var item in Model.Items)
                 {
                 <tr>
-                    <td data-label="Request Id">@item.REQUEST_ID</td>
-                    <td data-label="EMPLOYEE USERNAME">@item.EmpUsername</td>
-                    <td data-label="In Date">@item.REQUEST_DATE.ToString("yyyy-MM-dd HH:mm")</td>
-                    <td data-label="ORDER_ID">
+                    <td data-label="Mã yêu cầu">@item.REQUEST_ID</td>
+                    <td data-label="Nhân viên">@item.EmpUsername</td>
+                    <td data-label="Ngày tạo">@item.REQUEST_DATE.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td data-label="Mã đơn hàng">
                         <a asp-area="Admin"
                            asp-controller="Order"
                            asp-action="Details"
@@ -270,8 +270,8 @@
                             @item.ORDER_ID
                         </a>
                     </td>
-                    <td data-label="STATUS">@item.STATUS</td>
-                    <td data-label="ACTION">
+                    <td data-label="Trạng thái">@item.STATUS</td>
+                    <td data-label="Thao tác">
                         <div class="action-buttons">
                             <a class="btn-action btn-info"
                                asp-area="Admin"

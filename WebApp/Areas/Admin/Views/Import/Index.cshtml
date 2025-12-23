@@ -1,7 +1,7 @@
 ﻿@model WebApp.Models.Common.PaginatedList<WebApp.Models.Part.ImportViewModel>
 
 @{
-    ViewData["Title"] = "Danh sách Import";
+    ViewData["Title"] = "Danh sách nhập kho";
 }
 
 <style>
@@ -301,11 +301,11 @@
     <table class="import-table">
         <thead>
             <tr>
-                <th>StockIn ID</th>
-                <th>Employee Username</th>
-                <th>In Date</th>
-                <th>Note</th>
-                <th>Actions</th>
+                <th>Mã nhập kho</th>
+                <th>Nhân viên</th>
+                <th>Ngày nhập</th>
+                <th>Ghi chú</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -314,11 +314,11 @@
                 foreach (var item in Model.Items)
                 {
                 <tr>
-                    <td data-label="StockIn ID">@item.StockInId</td>
-                    <td data-label="Employee Username">@item.EmpUsername</td>
-                    <td data-label="In Date">@item.OutDate.ToString("yyyy-MM-dd HH:mm")</td>
-                    <td data-label="Note">@item.Note</td>
-                    <td data-label="Actions">
+                    <td data-label="Mã nhập kho">@item.StockInId</td>
+                    <td data-label="Nhân viên">@item.EmpUsername</td>
+                    <td data-label="Ngày nhập">@item.OutDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td data-label="Ghi chú">@item.Note</td>
+                    <td data-label="Thao tác">
                         <div class="action-buttons">
                             <a class="btn-action btn-info"
                                asp-area="Admin"

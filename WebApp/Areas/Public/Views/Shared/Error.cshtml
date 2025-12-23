@@ -1,22 +1,22 @@
 ﻿@using WebApp.Models
 @model WebApp.Models.ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = "Lỗi";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Lỗi.</h1>
+<h2 class="text-danger">Đã xảy ra lỗi khi xử lý yêu cầu của bạn.</h2>
 
 @if (Model.ShowRequestId)
 {
     <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        <strong>Mã yêu cầu:</strong> <code>@Model.RequestId</code>
     </p>
 }
 
-<h3>Development Mode</h3>
+<h3>Chế độ phát triển</h3>
 <p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+    Chuyển sang môi trường <strong>Development</strong> sẽ hiển thị thông tin chi tiết hơn về lỗi đã xảy ra.
 </p>
 <p>
     <strong>The Development environment shouldn't be enabled for deployed applications.</strong>

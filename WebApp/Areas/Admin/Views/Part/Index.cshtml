@@ -359,15 +359,15 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Manufacturer</th>
+                <th>Tên</th>
+                <th>Nhà sản xuất</th>
                 <th>Serial</th>
                 <th>QR</th>
-                <th>Status</th>
-                <th>StockinId</th>
-                <th>OrderId</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>Trạng thái</th>
+                <th>Mã nhập</th>
+                <th>Mã đơn</th>
+                <th>Giá</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -377,8 +377,8 @@
             {
                 <tr>
                     <td data-label="#">@item.PartId</td>
-                    <td data-label="Name">@item.Name</td>
-                    <td data-label="Manufacturer">@item.Manufacturer</td>
+                    <td data-label="Tên">@item.Name</td>
+                    <td data-label="Nhà sản xuất">@item.Manufacturer</td>
                     <td data-label="Serial">@item.Serial</td>
                     <td data-label="QR">
                         @if (item.QRImage != null && item.QRImage.Length > 0)
@@ -388,8 +388,8 @@
                             <img src="@imgSrc" alt="QR Code" style="width:80px; height:80px;" />
                         }
                     </td>
-                    <td data-label="Status">@item.Status</td>
-                    <td data-label="StockinId">
+                    <td data-label="Trạng thái">@item.Status</td>
+                    <td data-label="Mã nhập">
                         @if (item.StockinID > 0)
                         {
                             <a asp-area="Admin" 
@@ -405,7 +405,7 @@
                             <text>-</text>
                         }
                     </td>
-                    <td data-label="OrderId">
+                    <td data-label="Mã đơn">
                         @if (item.OrderId.HasValue && item.OrderId.Value > 0)
                         {
                             <a asp-area="Admin" 
@@ -421,8 +421,8 @@
                             <text>-</text>
                         }
                     </td>
-                    <td data-label="Price">@item.Price</td>
-                    <td data-label="Actions">
+                    <td data-label="Giá">@item.Price</td>
+                    <td data-label="Thao tác">
                         <a class="btn-action btn-detail"
                            asp-area="Admin"
                            asp-controller="Part"

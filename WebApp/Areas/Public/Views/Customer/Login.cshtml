@@ -1,7 +1,7 @@
 ﻿@inject IConfiguration Configuration
 @{
     Layout = "~/Areas/Public/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Đăng nhập khách hàng";
+    ViewData["Title"] = "Đăng nhập";
 
     var webApiBase = (Configuration["WebApi:BaseUrl"] ?? string.Empty).TrimEnd('/');
     var qrCreateUrl = string.IsNullOrEmpty(webApiBase) ? string.Empty : $"{webApiBase}/api/Public/QrLogin/create";
@@ -22,11 +22,11 @@
                       data-login-form="true">
                     @Html.AntiForgeryToken()
                     <div class="mb-3">
-                        <label class="form-label">Username</label>
+                        <label class="form-label">Tên đăng nhập</label>
                         <input class="form-control" name="username" required />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Password</label>
+                        <label class="form-label">Mật khẩu</label>
                         <input class="form-control" type="password" name="password" required />
                     </div>
                     <button class="btn btn-primary w-100" type="submit">Đăng nhập</button>
@@ -70,7 +70,7 @@
                     <label class="form-label small text-uppercase text-muted">Nhập mã trên app (nếu không quét được)</label>
                     <div class="input-group">
                         <input class="form-control text-uppercase" id="qrManualCode" readonly />
-                        <button class="btn btn-outline-secondary" type="button" id="btnCopyQrCode">Copy</button>
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyQrCode">Sao chép</button>
                     </div>
                 </div>
                 <div class="alert alert-success d-none" id="qrSuccessAlert"></div>

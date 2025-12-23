@@ -97,7 +97,7 @@ class _EmployeeExportDetailScreenState extends State<EmployeeExportDetailScreen>
               Text(message.toString().isNotEmpty ? message.toString() : 
                   (isValid ? 'Chữ ký số hợp lệ' : 'Chữ ký số không hợp lệ')),
               const SizedBox(height: 8),
-              Text('StockOut ID: $stockOutId'),
+              Text('Mã xuất kho: $stockOutId'),
             ],
           ),
           actions: [

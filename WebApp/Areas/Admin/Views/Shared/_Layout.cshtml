@@ -2,7 +2,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
-    var title = ViewData["Title"] ?? "Admin Dashboard";
+    var title = ViewData["Title"] ?? "Bảng điều khiển Quản trị";
     var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
     var roleString = HttpContextAccessor.HttpContext.Session.GetString("Role") ?? "";
     var roles = roleString.Split(',', StringSplitOptions.RemoveEmptyEntries)
@@ -611,7 +611,7 @@
                 </button>
                 <span class="d-none d-lg-inline-flex align-items-center gap-2">
                     <i class="bi bi-tools"></i>
-                    Cổng quản trị
+                    Cổng Quản Trị
                 </span>
             </div>
             <ul class="nav nav-pills flex-column mb-auto">
@@ -629,7 +629,7 @@
                 <li>
                     <a class="nav-link d-flex align-items-center" asp-area="Admin" asp-controller="Home" asp-action="Index">
                         <span class="icon bi bi-speedometer2"></span>
-                        <span class="nav-label">Trang tổng quan</span>
+                        <span class="nav-label">Bảng điều khiển</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -684,7 +684,7 @@
                             <li>
                                 <a class="nav-link d-flex align-items-center" asp-area="Admin" asp-controller="Profile" asp-action="Index">
                                     <span class="icon bi bi-dot"></span>
-                                    <span class="nav-label">Profile</span>
+                                    <span class="nav-label">Hồ sơ nhân viên</span>
                                 </a>
                             </li>
                         </ul>
@@ -825,7 +825,7 @@
                         <a class="nav-link collapse-toggle" href="#collapseAudit" role="button" aria-expanded="false" aria-controls="collapseAudit">
                             <span class="d-flex align-items-center">
                                 <span class="icon bi bi-clipboard-data"></span>
-                                <span class="nav-label">Audit</span>
+                                <span class="nav-label">Kiểm toán</span>
                             </span>
                             <span class="caret bi bi-chevron-down"></span>
                         </a>
@@ -833,7 +833,7 @@
                             <li>
                                 <a class="nav-link d-flex align-items-center" asp-area="Admin" asp-controller="Audit" asp-action="TriggerAudit">
                                     <span class="icon bi bi-dot"></span>
-                                    <span class="nav-label">TriggerAudit</span>
+                                    <span class="nav-label">Kiểm toán Trigger</span>
                                 </a>
                             </li>
                             @* <li>
@@ -845,7 +845,7 @@
                             <li>
                                 <a class="nav-link d-flex align-items-center" asp-area="Admin" asp-controller="Audit" asp-action="StandardAudit">
                                     <span class="icon bi bi-dot"></span>
-                                    <span class="nav-label">StandardAudit</span>
+                                    <span class="nav-label">Kiểm toán Chuẩn</span>
                                 </a>
                             </li>
                         </ul>
@@ -861,7 +861,7 @@
                     <form method="post" asp-area="Admin" asp-controller="Employee" asp-action="Logout">
                         <button type="submit" class="nav-link btn btn-link text-start d-flex align-items-center gap-2 w-100">
                             <span class="icon bi bi-box-arrow-right"></span>
-                            <span class="nav-label">Logout (@username)</span>
+                            <span class="nav-label">Đăng xuất (@username)</span>
                         </button>
                     </form>
                 </li>
@@ -879,7 +879,7 @@
                     @if (!string.IsNullOrEmpty(username))
                     {
                         <div class="d-flex flex-column d-none d-lg-flex">
-                            <span class="fw-semibold">Welcome, @username</span>
+                            <span class="fw-semibold">Xin chào, @username</span>
                             <small class="text-muted">@string.Join(", ", roles)</small>
                         </div>
                         
@@ -893,7 +893,7 @@
                     }
                     else
                     {
-                        <span class="navbar-text d-none d-lg-inline">Welcome, Guest!</span>
+                        <span class="navbar-text d-none d-lg-inline">Xin chào, Khách!</span>
                     }
                 </div>
             </nav>
@@ -903,7 +903,7 @@
             </div>
             
             <footer class="border-top text-muted py-2 mt-auto">
-                <div class="container text-center">Admin Dashboard</div>
+                <div class="container text-center">Bảng điều khiển Quản trị</div>
             </footer>
         </div>
     </div>

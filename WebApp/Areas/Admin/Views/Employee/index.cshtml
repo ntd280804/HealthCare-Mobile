@@ -426,7 +426,7 @@
             min-width: 100px;
         }
 
-        .employee-table tbody td[data-label="Actions"]::before {
+        .employee-table tbody td[data-label="Thao tác"]::before {
             display: none;
         }
 
@@ -574,7 +574,7 @@
             <input class="form-control" type="text" name="fullName" placeholder="Tên nhân viên" value="@Context.Request.Query["fullName"]" />
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <input class="form-control" type="text" name="username" placeholder="Username" value="@Context.Request.Query["username"]" />
+            <input class="form-control" type="text" name="username" placeholder="Tên đăng nhập" value="@Context.Request.Query["username"]" />
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
             <select class="form-select" name="role">
@@ -610,13 +610,13 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Full Name</th>
-                <th>Username</th>
-                <th>Status</th>
+                <th>Họ tên</th>
+                <th>Tên đăng nhập</th>
+                <th>Trạng thái</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th>SĐT</th>
+                <th>Vai trò</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -626,30 +626,30 @@
                 {
                     <tr>
                         <td data-label="#">@emp.EmpId</td>
-                        <td data-label="Full Name">@emp.FullName</td>
-                        <td data-label="Username">@emp.Username</td>
-                        <td data-label="Status">
+                        <td data-label="Họ tên">@emp.FullName</td>
+                        <td data-label="Tên đăng nhập">@emp.Username</td>
+                        <td data-label="Trạng thái">
                             <span class="status-badge @(emp.Status == "OPEN" ? "status-open" : "status-locked")">
                                 @emp.Status
                             </span>
                         </td>
                         <td data-label="Email">@emp.Email</td>
-                        <td data-label="Phone">@emp.Phone</td>
-                        <td data-label="Role">@emp.Roles</td>
-                        <td data-label="Actions">
+                        <td data-label="SĐT">@emp.Phone</td>
+                        <td data-label="Vai trò">@emp.Roles</td>
+                        <td data-label="Thao tác">
                             <div class="action-buttons">
                                 @if (emp.Status == "OPEN")
                                 {
                                     <form method="post" asp-action="Lock" asp-controller="Employee" class="d-inline">
                                         <input type="hidden" name="username" value="@emp.Username" />
-                                        <button type="submit" class="btn-action btn-lock">Lock</button>
+                                        <button type="submit" class="btn-action btn-lock">Khóa</button>
                                     </form>
                                 }
                                 else
                                 {
                                     <form method="post" asp-action="Unlock" asp-controller="Employee" class="d-inline">
                                         <input type="hidden" name="username" value="@emp.Username" />
-                                        <button type="submit" class="btn-action btn-unlock">Unlock</button>
+                                        <button type="submit" class="btn-action btn-unlock">Mở khóa</button>
                                     </form>
                                 }
                             </div>

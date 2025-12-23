@@ -315,7 +315,7 @@
         <div class="detail-card-body">
             <div class="info-grid">
                 <div class="info-item">
-                    <label>Order ID</label>
+                    <label>Mã đơn hàng</label>
                     <div class="info-value">
                         <a asp-area="Admin"
                            asp-controller="Order"
@@ -326,15 +326,15 @@
                     </div>
                 </div>
                 <div class="info-item">
-                    <label>Employee Username</label>
+                    <label>Nhân viên</label>
                     <div class="info-value">@Model.EmpUsername</div>
                 </div>
                 <div class="info-item">
-                    <label>Request Date</label>
+                    <label>Ngày yêu cầu</label>
                     <div class="info-value">@Model.REQUEST_DATE.ToString("yyyy-MM-dd HH:mm")</div>
                 </div>
                 <div class="info-item">
-                    <label>Status</label>
+                    <label>Trạng thái</label>
                     <div class="info-value">
                         <span class="status-badge @(Model.STATUS == "Đang chờ" ? "status-pending" : Model.STATUS == "Đồng ý" ? "status-approved" : "status-rejected")">
                             @Model.STATUS

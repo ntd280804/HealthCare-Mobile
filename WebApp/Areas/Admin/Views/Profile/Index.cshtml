@@ -1,6 +1,6 @@
 @model WebApp.Models.Permission.UserProfileViewModel
 @{
-    ViewData["Title"] = "Quản lý Profile";
+    ViewData["Title"] = "Quản lý hồ sơ";
 }
 
 <style>
@@ -290,12 +290,12 @@
                     <table class="profile-table">
                         <thead>
                             <tr>
-                                <th>Profile Name</th>
-                                <th>Idle Time</th>
-                                <th>Connect Time</th>
-                                <th>Failed Login</th>
-                                <th>Lock Time</th>
-                                <th>Inactive Account Time</th>
+                                <th>Tên Profile</th>
+                                <th>Thời gian chờ</th>
+                                <th>Thời gian kết nối</th>
+                                <th>Số lần đăng nhập lỗi</th>
+                                <th>Thời gian khóa</th>
+                                <th>Thời gian không hoạt động</th>
                             </tr>
                         </thead>
                         <tbody id="profile-list">
@@ -382,23 +382,23 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-2">
-                            <label for="IdleTime" class="form-label">Idle Time</label>
+                            <label for="IdleTime" class="form-label">Thời gian chờ</label>
                             <input type="text" name="IdleTime" class="form-control" value="UNLIMITED" />
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="ConnectTime" class="form-label">Connect Time</label>
+                            <label for="ConnectTime" class="form-label">Thời gian kết nối</label>
                             <input type="text" name="ConnectTime" class="form-control" value="UNLIMITED" />
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="FailedLogin" class="form-label">Failed Login</label>
+                            <label for="FailedLogin" class="form-label">Số lần đăng nhập lỗi</label>
                             <input type="text" name="FailedLogin" class="form-control" value="UNLIMITED" />
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="LockTime" class="form-label">Lock Time</label>
+                            <label for="LockTime" class="form-label">Thời gian khóa</label>
                             <input type="text" name="LockTime" class="form-control" value="UNLIMITED" />
                         </div>
                         <div class="col-12 mb-2">
-                            <label for="InactiveAccountTime" class="form-label">Inactive Account Time</label>
+                            <label for="InactiveAccountTime" class="form-label">Thời gian không hoạt động</label>
                             <input type="text" name="InactiveAccountTime" class="form-control" value="UNLIMITED" />
                         </div>
                     </div>
@@ -452,23 +452,23 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-2">
-                            <label for="IdleTime" class="form-label">Idle Time</label>
+                            <label for="IdleTime" class="form-label">Thời gian chờ</label>
                             <input type="text" name="IdleTime" class="form-control" placeholder="UNLIMITED hoặc số" />
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="ConnectTime" class="form-label">Connect Time</label>
+                            <label for="ConnectTime" class="form-label">Thời gian kết nối</label>
                             <input type="text" name="ConnectTime" class="form-control" placeholder="UNLIMITED hoặc số" />
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="FailedLogin" class="form-label">Failed Login</label>
+                            <label for="FailedLogin" class="form-label">Số lần đăng nhập lỗi</label>
                             <input type="text" name="FailedLogin" class="form-control" placeholder="UNLIMITED hoặc số" />
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="LockTime" class="form-label">Lock Time</label>
+                            <label for="LockTime" class="form-label">Thời gian khóa</label>
                             <input type="text" name="LockTime" class="form-control" placeholder="UNLIMITED hoặc số" />
                         </div>
                         <div class="col-12 mb-2">
-                            <label for="InactiveAccountTime" class="form-label">Inactive Time</label>
+                            <label for="InactiveAccountTime" class="form-label">Thời gian không hoạt động</label>
                             <input type="text" name="InactiveAccountTime" class="form-control" placeholder="UNLIMITED hoặc số" />
                         </div>
                     </div>

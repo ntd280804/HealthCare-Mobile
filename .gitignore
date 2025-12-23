@@ -1,1 +1,10 @@
 .vs/
+.docs/
+# Flutter/Dart build directories
+**/build/
+**/.dart_tool/
+*.dill
+
+# Large binary files
+*.so
+*.apk
